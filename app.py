@@ -107,5 +107,5 @@ def get_places():
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()
+        db.create_all()  # Vytvoří všechny tabulky podle modelů
     app.run(debug=True)
