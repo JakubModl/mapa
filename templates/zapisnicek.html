@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zápisníček ❤️</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='zapisnicek.css') }}" />
+</head>
+<body>
+    <h1>Zápisníček ❤️</h1>
+    <form action="/add_note" method="post">
+        <textarea name="content" placeholder="Napiš něco krásného..." required></textarea>
+        <button type="submit">Přidat vzkaz</button>
+    </form>
+    <ul class="note-list">
+        {% for note in notes %}
+            <li>
+                <p>{{ note.content }}</p>
+                <small>{{ note.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                <form action="/delete_note/{{ note.id }}" method="post" class="delete-form">
+                    <button type="submit" class="delete-button">❌ Smazat</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="/">← Zpět na mapu</a>
+</body>
+</html>

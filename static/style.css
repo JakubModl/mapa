@@ -1,0 +1,69 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe6f2;
+    color: #d63384;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #c2185b;
+    margin: 20px 0;
+}
+
+.love-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.7em;
+    color: #e91e63;
+    margin-bottom: 20px;
+}
+
+#map {
+    height: 500px;
+    width: 80%;
+    border: 3px solid #c2185b;
+    border-radius: 15px;
+}
+
+/* Formulář – úprava inputů a tlačítka */
+form {
+    display: flex;
+    gap: 10px;
+}
+
+.form-input {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    border: 2px solid #ff4081;
+}
+
+.form-button {
+    padding: 12px 24px;
+    font-size: 14px;
+    background-color: #c2185b;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #e91e63;
+}
+
+/* Tooltip na body */
+.leaflet-tooltip {
+    background-color: #ff4081;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}

@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa Lenči ❤️ Kuby</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+<body>
+    <div class="hearts">❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️</div>
+    <h1>Mapa Lenči ❤️ Kuby</h1>
+    <p class="love-message">Leni, miluju tě z celého srdce! Jsi moje všechno. ❤️</p>
+    <div id="map"></div>
+    <form id="addPlaceForm" action="/add_place" method="post">
+        <input type="text" name="name" placeholder="Název místa" required class="form-input" />
+        <input type="hidden" name="lat" id="lat" required />
+        <input type="hidden" name="lng" id="lng" required />
+        <input type="datetime-local" name="date" required class="form-input" />
+        <button type="submit" class="form-button">Přidat místo</button>
+    </form>
+    <a href="/zapisnicek" class="form-button">Zápisníček</a>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

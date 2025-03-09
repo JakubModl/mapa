@@ -1,0 +1,99 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe6f2;
+    color: #d63384;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #c2185b;
+    margin: 20px 0;
+}
+
+/* Textarea pro psaní vzkazů */
+textarea {
+    width: 90%;
+    max-width: 600px;
+    padding: 14px;
+    border-radius: 20px;
+    border: 2px solid #ff4081;
+    font-size: 16px;
+    background-color: #fff0f5;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+/* Tlačítko pro přidání vzkazu */
+button {
+    background-color: #c2185b;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background-color: #e91e63;
+    transform: scale(1.05);
+}
+
+/* Seznam vzkazů */
+.note-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.note-list li {
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 15px;
+    border: 2px solid #ff4081;
+    margin-bottom: 12px;
+    position: relative;
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease-in-out;
+    width: 90%;
+    max-width: 500px;
+}
+
+.note-list li:hover {
+    transform: translateY(-3px);
+}
+
+.delete-button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+}
+
+.delete-button:hover {
+    background-color: #ff4081;
+}
+
+/* Odkaz zpět na mapu */
+a {
+    text-decoration: none;
+    color: #c2185b;
+    font-size: 18px;
+    margin-top: 20px;
+    display: inline-block;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #ff4081;
+}
