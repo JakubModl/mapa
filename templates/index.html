@@ -7,12 +7,16 @@
     <title>Mapa Lenči ❤️ Kuby</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
     <div class="hearts">❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️</div>
     <h1>Mapa Lenči ❤️ Kuby</h1>
     <p class="love-message">Leni, miluju tě z celého srdce! Jsi moje všechno. ❤️</p>
+    <!-- Přidán odkaz na zápisníček -->
+    	<a href="/zapisnicek" class="form-button"> ❤️ Zápisníček</a>
+
     <div id="map"></div>
     <form id="addPlaceForm" action="/add_place" method="post">
         <input type="text" name="name" placeholder="Název místa" required class="form-input" />
@@ -21,7 +25,6 @@
         <input type="datetime-local" name="date" required class="form-input" />
         <button type="submit" class="form-button">Přidat místo</button>
     </form>
-    <a href="/zapisnicek" class="form-button">Zápisníček</a>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
