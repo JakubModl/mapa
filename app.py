@@ -2,12 +2,14 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from urllib.parse import quote as url_quote
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+# Databázový model pro Místa
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
@@ -15,21 +17,25 @@ class Place(db.Model):
     lng = db.Column(db.Float, nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False)
 
+# Databázový model pro Vzkazy (Zápisníček)
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
+# Hlavní stránka s mapou
 @app.route('/')
 def index():
     places = Place.query.all()
     return render_template('index.html', places=places)
 
+# Stránka se zápisníčkem
 @app.route('/zapisnicek')
 def zapisnicek():
     notes = Note.query.order_by(Note.timestamp.desc()).all()
     return render_template('zapisnicek.html', notes=notes)
 
+# Přidání místa na mapu
 @app.route('/add_place', methods=['POST'])
 def add_place():
     try:
@@ -50,6 +56,7 @@ def add_place():
         print(f"Error: {e}")
         return "Invalid data", 400
 
+# Mazání místa z mapy
 @app.route('/delete_place/<int:id>', methods=['POST'])
 def delete_place(id):
     place = Place.query.get(id)
@@ -58,6 +65,7 @@ def delete_place(id):
         db.session.commit()
     return redirect(url_for('index'))
 
+# Úprava místa na mapě
 @app.route('/update_place/<int:id>', methods=['POST'])
 def update_place(id):
     try:
@@ -71,6 +79,7 @@ def update_place(id):
         print(f"Error: {e}")
         return "Invalid data", 400
 
+# Přidání vzkazu do zápisníčku
 @app.route('/add_note', methods=['POST'])
 def add_note():
     content = request.form.get('content')
@@ -80,6 +89,7 @@ def add_note():
         db.session.commit()
     return redirect(url_for('zapisnicek'))
 
+# Smazání vzkazu ze zápisníčku
 @app.route('/delete_note/<int:id>', methods=['POST'])
 def delete_note(id):
     note = Note.query.get(id)
@@ -88,6 +98,7 @@ def delete_note(id):
         db.session.commit()
     return redirect(url_for('zapisnicek'))
 
+# Získání všech míst (pro JavaScript)
 @app.route('/get_places', methods=['GET'])
 def get_places():
     places = Place.query.all()
